@@ -1,4 +1,4 @@
-# Import Scala Files [![Latest version](https://img.shields.io/badge/sbt_import_scala_files-1.0-green.svg)](https://mvnrepository.com/artifact/org.caoilte/sbt-import-scala-files_2.10/1.0)
+# Import Scala Files [![Latest version](https://img.shields.io/badge/sbt_import_scala_files-1.0.0-green.svg)](https://mvnrepository.com/artifact/org.caoilte/sbt-import-scala-files_2.10_0.13/1.0.0/)
 
 sbt-import-scala-files is a very small sbt plugin for importing Scala files into your build. This is most useful when you want to re-use Scala files from your [meta-build] (files under the project directory) in your proper build. 
 
@@ -8,12 +8,14 @@ This plugin was written to make it easier to write defaults plugins. A defaults 
 
 If you are writing a defaults plugin you may also find yourself wanting to make the same decisions that you make for your other projects about your defaults plugin as well. However, sbt provides no out of the box way to refer to meta-build configuration in the proper build. This plugin makes such inter-dependencies possible.
 
+If this sounds like _turtles all the way down..._ it really is.
+
 ## Installation
 
 Add the following to your `project/plugins.sbt` file:
 
 ```scala
-addSbtPlugin("org.caoilte" % "sbt-import-scala-files" % "1.0")
+addSbtPlugin("org.caoilte" % "sbt-import-scala-files" % "1.0.0")
 ```
 
 The plugin is now enabled, but will not do anything until you define a `Seq[File]` to be imported with the `filesToImport` setting. It will then copy those files into your build's managed source directory before every compilation phase using the [source generation task][generating-files].
