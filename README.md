@@ -52,6 +52,7 @@ One way is to create a Scala file in your meta-meta-build (ie the `project/proje
 
 [meta-build]: http://www.scala-sbt.org/0.13/docs/Organizing-Build.html "Organizing the build"
 [generating-files]: http://www.scala-sbt.org/0.13/docs/Howto-Generating-Files.html "Generating files"
+[LICENCE]: https://github.com/caoilte/sbt-import-scala-files/blob/master/LICENCE "Licence"
 [sbt-test-import-from-meta-build]: https://github.com/caoilte/sbt-import-scala-files/tree/master/src/sbt-test/sbt-import-scala-files/from-meta-build "sbt test import from meta-build"
 [from-meta-build-constants-file]: https://github.com/caoilte/sbt-import-scala-files/blob/master/src/sbt-test/sbt-import-scala-files/from-meta-build/project/MetaBuildConstants.scala "meta-build constants"
 [from-meta-build-build-file]: https://github.com/caoilte/sbt-import-scala-files/blob/master/src/sbt-test/sbt-import-scala-files/from-meta-build/build.sbt "From meta-build build.sbt"
