@@ -1,4 +1,4 @@
-# Import Scala Files [![Latest version](https://img.shields.io/badge/sbt_import_scala_files-1.0.0-green.svg)](https://mvnrepository.com/artifact/org.caoilte/sbt-import-scala-files_2.10_0.13/1.0.0/)
+# Import Scala Files [![Latest version](https://img.shields.io/badge/sbt_import_scala_files-2.0.0-green.svg)](https://repo1.maven.org/maven2/org/caoilte/sbt-import-scala-files_2.12_1.0/2.0.0/) [![Build Status](https://api.travis-ci.org/caoilte/sbt-import-scala-files.svg?branch=master&status=created)](https://travis-ci.org/github/caoilte/sbt-import-scala-files)
 
 sbt-import-scala-files is a very small sbt plugin for importing Scala files into your build. This is most useful when you want to re-use Scala files from your [meta-build] (files under the project directory) in your proper build. 
 
