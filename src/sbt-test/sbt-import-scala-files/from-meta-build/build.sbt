@@ -1,5 +1,5 @@
 version := "0.1"
 
-scalaVersion := "2.10.6"
+scalaVersion := "2.12.10"
 
-filesToImport := Seq(file("project/MetaBuildConstants.scala"))
+importScalaFilesList := Seq(file("project/MetaBuildConstants.scala"))

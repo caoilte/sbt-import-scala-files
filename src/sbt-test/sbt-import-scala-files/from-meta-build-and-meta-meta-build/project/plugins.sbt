@@ -4,6 +4,6 @@ sys.props.get("plugin.version") match {
                          |Specify this property using the scriptedLaunchOpts -D.""".stripMargin)
 }
 
-filesToImport := Seq(file("project/project/Library.scala"))
+importScalaFilesList := Seq(file("project/project/Library.scala"))
 
 org.caoilte.Library.pluginDependenciesAsPluginSettings

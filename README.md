@@ -15,10 +15,10 @@ If this sounds like _turtles all the way down..._ it really is.
 Add the following to your `project/plugins.sbt` file:
 
 ```scala
-addSbtPlugin("org.caoilte" % "sbt-import-scala-files" % "1.0.0")
+addSbtPlugin("org.caoilte" % "sbt-import-scala-files" % "2.0.0")
 ```
 
-The plugin is now enabled, but will not do anything until you define a `Seq[File]` to be imported with the `filesToImport` setting. It will then copy those files into your build's managed source directory before every compilation phase using the [source generation task][generating-files].
+The plugin is now enabled, but will not do anything until you define a `Seq[File]` to be imported with the `importScalaFilesList` setting. It will then copy those files into your build's managed source directory before every compilation phase using the [source generation task][generating-files].
 
 # Licence
 

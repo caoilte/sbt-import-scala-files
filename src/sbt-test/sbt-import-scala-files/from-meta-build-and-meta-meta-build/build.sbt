@@ -1,8 +1,8 @@
 version := "0.1"
 
-scalaVersion := "2.10.6"
+scalaVersion := "2.12.10"
 
-filesToImport := Seq(file("project/project/Library.scala"))
+importScalaFilesList := Seq(file("project/project/Library.scala"))
 
 sbtPlugin := true
 

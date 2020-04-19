@@ -19,3 +19,7 @@ project/project/credentials.sbt
 .worksheet
 .idea
 .idea_modules/
+
+# Metals specific
+.bloop
+.metals

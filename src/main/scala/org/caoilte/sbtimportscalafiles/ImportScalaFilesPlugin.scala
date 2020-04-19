@@ -11,24 +11,26 @@ object ImportScalaFilesPlugin extends AutoPlugin {
   override def trigger = allRequirements
 
   object autoImport {
-    lazy val filesToImport = settingKey[Seq[File]](
-      "Scala files to be imported into this build's generated source directory by 'importFiles' task"
+    lazy val importScalaFilesList = settingKey[Seq[File]](
+      "Scala files to be imported into this build's generated source directory by 'importScalaFiles' task"
     )
-    lazy val importFiles = taskKey[Seq[File]](
-      "Import files defined in 'filesToImport' setting to this builds generated source directory"
+    lazy val importScalaFiles = taskKey[Seq[File]](
+      "Import files defined in 'importScalaFilesList' setting to this build's generated source directory"
     )
   }
   import autoImport._
 
   override lazy val projectSettings = Seq(
-    filesToImport := Nil,
-    importFiles := {
-      filesToImport.value.map { metaProjectFileToImport =>
+    importScalaFilesList := Nil,
+    importScalaFiles := {
+      val sts = streams.value
+      val logger = sts.log
+      importScalaFilesList.value.map { metaProjectFileToImport =>
         val copiedFile: File = ImportScalaFiles(sourceManaged.value, metaProjectFileToImport)
 
         val baseDirOfLocalRootProject = (baseDirectory in LocalRootProject).value
 
-        streams.value.log.info(
+        logger.info(
           ImportScalaFiles.copiedFileString(
             baseDirOfLocalRootProject = baseDirOfLocalRootProject,
             from = metaProjectFileToImport,
@@ -39,7 +41,7 @@ object ImportScalaFilesPlugin extends AutoPlugin {
         copiedFile
       }
     },
-    sourceGenerators in Compile += importFiles.taskValue
+    sourceGenerators in Compile += importScalaFiles.taskValue
   )
 }
 
@@ -51,12 +53,13 @@ object ImportScalaFiles {
     } else "."
   }
 
-  private val relativeLocation: File => File => String = baseDirectory => file => {
-    val index = baseDirectory.getPath.length + 1
-    file.getAbsolutePath.substring(index)
-  }
+  private val relativeLocation: File => File => String = baseDirectory =>
+    file => {
+      val index = baseDirectory.getPath.length + 1
+      file.getAbsolutePath.substring(index)
+    }
 
-  def copiedFileString(baseDirOfLocalRootProject: File, from: File, to: File):String = {
+  def copiedFileString(baseDirOfLocalRootProject: File, from: File, to: File): String = {
     val relativeToBaseDir = relativeLocation(baseDirOfLocalRootProject)
 
     val baseDirStr = relativeBaseDir(baseDirOfLocalRootProject)
@@ -66,10 +69,10 @@ object ImportScalaFiles {
     import fansi.Color._
     (
       Cyan("ImportScalaFiles") ++
-      Str(": In '") ++ Green(baseDirStr) ++
-      Str("' copied '") ++ Green(fromStr) ++
-      Str("' to '") ++ Green(toStr) ++ White("'")
-      ).render
+        Str(": In '") ++ Green(baseDirStr) ++
+        Str("' copied '") ++ Green(fromStr) ++
+        Str("' to '") ++ Green(toStr) ++ White("'")
+    ).render
   }
 
   def apply(toDirectory: File, file: File): File = {

@@ -3,11 +3,11 @@ package org.caoilte
 import sbt._
 
 object V {
-  val scalafmt = "0.5.5"
+  val scalafmt = "2.0.0"
 }
 
 object Library {
-  val scalafmtPlugin = "com.geirsson" % "sbt-scalafmt" % V.scalafmt
+  val scalafmtPlugin = "org.scalameta" % "sbt-scalafmt" % V.scalafmt
 
   val pluginDependencies = Seq(
     scalafmtPlugin
